@@ -1,0 +1,8 @@
+# python
+.venv/
+__pycache__/
+*.pyc
+pipeline/.cache_players.json
+pipeline/adp.csv
+# os
+.DS_Store

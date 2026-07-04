@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "FF Draft Bot — PPR Live Assistant",
+  "version": "1.0.0",
+  "description": "Live in-draft best-pick recommendations for Sleeper & ESPN. PPR, advanced-analytics value model.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://sleeper.com/*",
+    "https://*.sleeper.app/*",
+    "https://api.sleeper.app/*",
+    "https://fantasy.espn.com/*",
+    "https://*.espn.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["data/rankings.json", "panel.css"],
+      "matches": ["https://sleeper.com/*", "https://*.sleeper.app/*", "https://fantasy.espn.com/*", "https://*.espn.com/*"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://sleeper.com/*", "https://*.sleeper.app/*"],
+      "js": ["engine.js", "panel.js", "content-sleeper.js"],
+      "css": ["panel.css"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://fantasy.espn.com/*"],
+      "js": ["engine.js", "panel.js", "content-espn.js"],
+      "css": ["panel.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": { "default_title": "FF Draft Bot" }
+}
